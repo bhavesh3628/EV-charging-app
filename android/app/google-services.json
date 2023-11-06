@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "456795898989",
+    "project_id": "ev-charging-2f2d2",
+    "storage_bucket": "ev-charging-2f2d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456795898989:android:7732d60b1ede476bb1ab64",
+        "android_client_info": {
+          "package_name": "com.example.ev_charging"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQK3WcZ7irVGkrdLoCcdVS9Q1J29CCG9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
