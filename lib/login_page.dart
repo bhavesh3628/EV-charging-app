@@ -118,7 +118,11 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(12)),
                   child: Center(
                     child: InkWell(
-                      onTap: () {}, //for signup page
+                      onTap: () {
+                        setState(() {
+                          Navigator.pushNamed(context, '/');
+                        });
+                      }, //for signup page
                       child: Text(
                         "Sign In",
                         style: TextStyle(
@@ -143,12 +147,19 @@ class _LoginPageState extends State<LoginPage> {
                     "Don't you have an account?",
                     style: GoogleFonts.montserrat(),
                   ),
-                  Text(
-                    " Sign up",
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 20, 109, 183),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16),
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        Navigator.pushNamed(context, '/signup');
+                      });
+                    },
+                    child: Text(
+                      " Sign up",
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 20, 109, 183),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    ),
                   ),
                 ],
               ),

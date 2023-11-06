@@ -132,7 +132,9 @@ class _SignupPageState extends State<SignupPage> {
                       borderRadius: BorderRadius.circular(12)),
                   child: Center(
                     child: InkWell(
-                      onTap: () {}, //for signup page
+                      onTap: () {
+                        Navigator.pushNamed(context, '/login');
+                      }, //for signup page
                       child: const Text(
                         "Sign Up",
                         style: TextStyle(
