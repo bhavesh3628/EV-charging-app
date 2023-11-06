@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:ev_charging/ev_model.dart';
-import 'package:ev_charging/user/station_page.dart';
+import 'package:ev_charging/pages/user/station_page.dart';
 import 'package:flutter/material.dart';
 import 'add_ev.dart'; // Make sure to import correctly
 

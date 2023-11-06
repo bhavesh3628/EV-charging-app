@@ -1,9 +1,6 @@
-// ignore_for_file: prefer_const_constructors
-
-// import 'package:flutter/src/foundation/key.dart';
-import 'package:ev_charging/signup_page.dart';
+import 'package:ev_charging/pages/signup_page.dart';
+import 'package:ev_charging/pages/services/firebase_service.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_application_1/Routes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,52 +11,60 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      // ignore: prefer_const_literals_to_create_immutables
       body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            // ignore: prefer_const_literals_to_create_immutables
             children: [
-              Padding(padding: EdgeInsets.only(left: 30, right: 20)),
+              const Padding(padding: EdgeInsets.only(left: 30, right: 20)),
               // Icon(Icon.)
               //Hello statement
               Image.asset(
                 'assets/charging.png',
                 width: 130,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Text(
                 "EV Charging App",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.hind(
-                  color: Color.fromARGB(255, 255, 0, 0),
+                  color: const Color.fromARGB(255, 255, 0, 0),
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
                 "Hello Again!",
                 style: GoogleFonts.ptSans(
                   fontWeight: FontWeight.w600,
-                  color: Color.fromARGB(255, 45, 44, 44),
+                  color: const Color.fromARGB(255, 45, 44, 44),
                   fontSize: 25,
                 ),
               ),
 
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               Text(
                 "Welcome Back, you've been missed!",
                 style: GoogleFonts.montserrat(
                   fontSize: 17,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               //email textfield
               Padding(
@@ -72,8 +77,17 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
-                      decoration: InputDecoration(
+                    child: TextFormField(
+                      controller: _emailController,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Enter your email';
+                        } else if (!value.contains('@gmail.com')) {
+                          return 'Please enter valid email';
+                        }
+                        return null;
+                      },
+                      decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Email',
                       ),
@@ -82,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               //password textfield
               Padding(
@@ -95,9 +109,18 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
+                    child: TextFormField(
+                      controller: _passwordController,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Enter your password';
+                        } else if (value.length >= 6) {
+                          return 'Length of password should be greater than or equal to 6';
+                        }
+                        return null;
+                      },
                       obscureText: true,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Password',
                       ),
@@ -106,24 +129,20 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               //sign in button
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                       color: Colors.deepPurple,
                       borderRadius: BorderRadius.circular(12)),
                   child: Center(
                     child: InkWell(
-                      onTap: () {
-                        setState(() {
-                          Navigator.pushNamed(context, '/');
-                        });
-                      }, //for signup page
-                      child: Text(
+                      onTap: () async {}, //for signup page
+                      child: const Text(
                         "Sign In",
                         style: TextStyle(
                           color: Colors.white,
@@ -135,31 +154,26 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
 
-              //not registered or remebered, register now
               Row(
-                // ignore: prefer_const_literals_to_create_immutables
                 mainAxisAlignment: MainAxisAlignment.center,
-                // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   Text(
                     "Don't you have an account?",
                     style: GoogleFonts.montserrat(),
                   ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        Navigator.pushNamed(context, '/signup');
-                      });
-                    },
-                    child: Text(
-                      " Sign up",
+                  TextButton(
+                    child: const Text(
+                      ' Sign up',
                       style: TextStyle(
                           color: Color.fromARGB(255, 20, 109, 183),
                           fontWeight: FontWeight.bold,
                           fontSize: 16),
                     ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/');
+                    },
                   ),
                 ],
               ),

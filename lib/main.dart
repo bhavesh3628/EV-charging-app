@@ -1,11 +1,12 @@
-import 'package:ev_charging/admin/admin_home.dart';
-import 'package:ev_charging/user/manage_station.dart';
-import 'package:ev_charging/signup_page.dart';
+import 'package:ev_charging/pages/admin/admin_home.dart';
+import 'package:ev_charging/pages/services/user_management.dart';
+import 'package:ev_charging/pages/user/manage_station.dart';
 import 'package:flutter/material.dart';
 
-import 'admin/manage_station.dart';
-import 'user/home_page.dart';
-import 'login_page.dart';
+import 'pages/admin/manage_station.dart';
+import 'pages/login_page.dart';
+import 'pages/signup_page.dart';
+import 'pages/user/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/login',
+      home: userManagament(),
       routes: {
         '/station': (context) => const StationHomePage(),
         '/': (context) => const HomePage(),
