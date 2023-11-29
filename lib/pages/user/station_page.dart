@@ -7,11 +7,14 @@ class Ev_list extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (context, index) {
-        return StationPage(station: registered[index]);
-      },
-      itemCount: registered.length,
+    return Container(
+      height: MediaQuery.of(context).size.height * .85,
+      child: ListView.builder(
+        itemBuilder: (context, index) {
+          return StationPage(station: registered[index]);
+        },
+        itemCount: registered.length,
+      ),
     );
   }
 }
@@ -54,7 +57,7 @@ class StationPage extends StatelessWidget {
                   Row(
                     children: [
                       const Text(
-                        "City :",
+                        "City : ",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(
@@ -67,6 +70,10 @@ class StationPage extends StatelessWidget {
                   ),
                   Row(
                     children: [
+                      const Text(
+                        "Status: ",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                       Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
@@ -74,11 +81,12 @@ class StationPage extends StatelessWidget {
                           color: statusColor,
                         ),
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 4),
+                            horizontal: 5, vertical: 2),
                         child: Text(
-                          "Status: ${station.status.toString().split('.').last}",
+                          station.status.toString().split('.').last,
                           style: const TextStyle(color: Colors.white),
                         ),
+                        // ${station.status.toString().split('.').last}
                       ),
                     ],
                   ),

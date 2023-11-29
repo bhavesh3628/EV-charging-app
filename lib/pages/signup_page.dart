@@ -1,5 +1,6 @@
-import 'package:ev_charging/home_page.dart';
-import 'package:ev_charging/services/firebase_service.dart';
+import 'package:ev_charging/pages/admin/admin_home.dart';
+import 'package:ev_charging/pages/services/firebase_service.dart';
+import 'package:ev_charging/pages/user/home_page.dart';
 import 'package:ev_charging/utils/widget/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -224,14 +225,12 @@ class _SignupPageState extends State<SignupPage> {
                             selectedUserType);
 
                         if (result1 == 'success') {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const HomePage()));
                           if (selectedUserType == 'user') {
-                            Navigator.pushNamed(context, '/');
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const HomePage()));
                           } else if (selectedUserType == 'admin') {
-                            Navigator.pushNamed(context, '/');
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const StationHomePage()));
                           }
                           showSnackBar(context, result1!);
                         }

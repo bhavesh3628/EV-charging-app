@@ -3,7 +3,7 @@ import 'package:ev_charging/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../pages/user/home_page.dart';
+import '../user/home_page.dart';
 
 Widget userManagament() {
   return StreamBuilder<User?>(

@@ -1,11 +1,7 @@
 import 'package:ev_charging/firebase_options.dart';
-import 'package:ev_charging/manage_station.dart';
-import 'package:ev_charging/pages/signup_page.dart';
-import 'package:ev_charging/services/user_management.dart';
+import 'package:ev_charging/pages/services/user_management.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'home_page.dart';
-import 'pages/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
