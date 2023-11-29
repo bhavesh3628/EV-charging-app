@@ -141,7 +141,10 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(12)),
                   child: Center(
                     child: InkWell(
-                      onTap: () async {}, //for signup page
+                      onTap: () async {
+                        await signInUser(_emailController.text.trim(),
+                            _passwordController.text.trim());
+                      },
                       child: const Text(
                         "Sign In",
                         style: TextStyle(
@@ -172,7 +175,8 @@ class _LoginPageState extends State<LoginPage> {
                           fontSize: 16),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/');
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const SignupPage()));
                     },
                   ),
                 ],

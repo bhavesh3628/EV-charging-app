@@ -1,3 +1,4 @@
+import 'package:ev_charging/home_page.dart';
 import 'package:ev_charging/services/firebase_service.dart';
 import 'package:ev_charging/utils/widget/snackbar.dart';
 import 'package:flutter/material.dart';
@@ -223,7 +224,10 @@ class _SignupPageState extends State<SignupPage> {
                             selectedUserType);
 
                         if (result1 == 'success') {
-                          Navigator.pushNamed(context, '/');
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomePage()));
                           if (selectedUserType == 'user') {
                             Navigator.pushNamed(context, '/');
                           } else if (selectedUserType == 'admin') {

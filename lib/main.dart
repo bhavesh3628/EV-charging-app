@@ -28,12 +28,6 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: userManagament(),
-      routes: {
-        '/': (context) => const HomePage(),
-        '/login': (context) => const LoginPage(),
-        '/signup': (context) => const SignupPage(),
-        '/manage_stations': (context) => manageStation_page(),
-      },
     );
   }
 }
