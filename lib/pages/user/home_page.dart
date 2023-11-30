@@ -15,52 +15,55 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 90,
-        backgroundColor: Colors.blue,
-        centerTitle: true,
-        title: const Text(
-          "Dashboard",
-          style: TextStyle(
-              fontWeight: FontWeight.bold, color: Colors.white, fontSize: 25),
-        ),
-        actions: const [
-          Icon(
-            Icons.output,
-            color: Colors.white,
-            size: 25,
+        appBar: AppBar(
+          elevation: 90,
+          backgroundColor: Colors.blue,
+          centerTitle: true,
+          title: const Text(
+            "Dashboard",
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: Colors.white, fontSize: 25),
           ),
-          Padding(padding: EdgeInsets.only(right: 10))
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildCustomCard(context, 'assets/manage.png',
-                    'Manage \nEV Vehicles', manageStation_page()),
-                _buildCustomCard(context, 'assets/charge.png',
-                    'Find \nStations', const HomePage()),
-              ],
+          actions: const [
+            Icon(
+              Icons.output,
+              color: Colors.white,
+              size: 25,
             ),
-            // const SizedBox(
-            //     height: 16), // Adjust vertical spacing between rows as needed
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildCustomCard(context, 'assets/timetable.png',
-                    'View \nBookings', ViewBookings_Page()),
-                _buildCustomCard(context, 'assets/toggle.png', 'Profile\n',
-                    const LoginPage()),
-              ],
-            ),
+            Padding(padding: EdgeInsets.only(right: 10))
           ],
         ),
-      ),
-    );
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _buildCustomCard(context, 'assets/manage.png',
+                      'Manage \nEV Vehicles', manageStation_page()),
+                  _buildCustomCard(context, 'assets/charge.png',
+                      'Find \nStations', const HomePage()),
+                ],
+              ),
+              // const SizedBox(
+              //     height: 16), // Adjust vertical spacing between rows as needed
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _buildCustomCard(
+                    context,
+                    'assets/timetable.png',
+                    'View \nBookings',
+                    ViewBookings_Page(),
+                  ),
+                  _buildCustomCard(context, 'assets/toggle.png', 'Profile\n',
+                      const LoginPage()),
+                ],
+              ),
+            ],
+          ),
+        ));
   }
 }
 
