@@ -12,18 +12,15 @@ class manageStation_admin_page extends StatefulWidget {
 
 class _manageStation_admin_pageState extends State<manageStation_admin_page> {
   final List<Ev_model> _registeredstations = [
+    Ev_model(ev_city: 'Admin', station_name: 'Admin', status: Status.Enable),
     Ev_model(
-        city: 'Mumbai Station',
-        station_name: 'Rcity Mall Parking',
-        status: Status.Enable),
-    Ev_model(
-      city: 'Navi Mumbai Station',
-      station_name: 'HP Pump',
+      ev_city: 'Admin',
+      station_name: 'Admin',
       status: Status.Disable,
     ),
     Ev_model(
-      city: 'Manor Station',
-      station_name: 'Indian Oil Pump',
+      ev_city: 'Admin',
+      station_name: 'Admin',
       status: Status.Enable,
     ),
   ];
