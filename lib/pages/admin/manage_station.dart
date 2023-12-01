@@ -1,4 +1,4 @@
-import 'package:ev_charging/pages/user/station_page.dart';
+// import 'package:ev_charging/pages/user/station_page.dart';
 import 'package:flutter/material.dart';
 import 'package:ev_charging/ev_model.dart';
 
@@ -12,16 +12,16 @@ class manageStation_admin_page extends StatefulWidget {
 
 class _manageStation_admin_pageState extends State<manageStation_admin_page> {
   final List<Ev_model> _registeredstations = [
-    Ev_model(ev_city: 'Admin', station_name: 'Admin', status: Status.Enable),
+    Ev_model(model_name: 'Admin', plate_number: 'Admin', userId: 01),
     Ev_model(
-      ev_city: 'Admin',
-      station_name: 'Admin',
-      status: Status.Disable,
+      model_name: 'Admin',
+      plate_number: 'Admin',
+      userId: 02,
     ),
     Ev_model(
-      ev_city: 'Admin',
-      station_name: 'Admin',
-      status: Status.Enable,
+      model_name: 'Admin',
+      plate_number: 'Admin',
+      userId: 03,
     ),
   ];
 
@@ -50,8 +50,8 @@ class _manageStation_admin_pageState extends State<manageStation_admin_page> {
       ),
       body: Center(
         child: Container(
-          child: Ev_list(registered: _registeredstations),
-        ),
+            // child: Vie`(registered: _registeredstations),
+            ),
       ),
     );
   }

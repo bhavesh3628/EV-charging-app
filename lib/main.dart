@@ -1,5 +1,8 @@
 import 'package:ev_charging/firebase_options.dart';
+import 'package:ev_charging/pages/admin/admin_home.dart';
 import 'package:ev_charging/pages/services/user_management.dart';
+import 'package:ev_charging/pages/user/home_page.dart';
+import 'package:ev_charging/pages/user/user_profile.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +26,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: userManagament(),
+      // home: userManagament(),
+      home: ProfileScreen(),
     );
   }
 }

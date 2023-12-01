@@ -31,7 +31,7 @@ class _addNew_EvState extends State<addNew_Ev> {
                   onPressed: () {
                     Navigator.pop(ctx);
                   },
-                  child: Text("Okay"),
+                  child: const Text("Okay"),
                 )
               ],
             )),
@@ -69,9 +69,9 @@ class _addNew_EvState extends State<addNew_Ev> {
                 label: Text("Vehicle Plate Number"),
               ),
             ),
-            Row(
+            const Row(
               children: [
-                const Expanded(
+                Expanded(
                   child: TextField(
                     // controller: _amountcontroller,
                     maxLength: 20,
@@ -88,7 +88,8 @@ class _addNew_EvState extends State<addNew_Ev> {
                 const Spacer(),
                 TextButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 136, 124, 208)),
+                      backgroundColor:
+                          const Color.fromARGB(255, 136, 124, 208)),
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -101,7 +102,8 @@ class _addNew_EvState extends State<addNew_Ev> {
                 ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 136, 124, 208)),
+                        backgroundColor:
+                            const Color.fromARGB(255, 136, 124, 208)),
                     child: const Text(
                       "Save Vehicle",
                       style: TextStyle(color: Colors.white),
