@@ -40,9 +40,9 @@ class booking_card extends StatelessWidget {
             Column(
               children: [
                 Image.asset(
-                  'assets/electric-car.png',
+                  'assets/charging.png',
                   // 'https://www.audi-mediacenter.com/system/production/media/1282/images/bde751ee18fe149036c6b47d7595f6784f8901f8/AL090142_web_1440.jpg?1698171883',
-                  width: 90,
+                  width: 70,
                   fit: BoxFit.cover,
                 ),
               ],
@@ -53,7 +53,7 @@ class booking_card extends StatelessWidget {
               Row(
                 children: [
                   const Text(
-                    "Name : ",
+                    "Station Name : ",
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black),
                   ),
@@ -66,7 +66,7 @@ class booking_card extends StatelessWidget {
               Row(
                 children: [
                   const Text(
-                    "Vehicle Brand : ",
+                    "Vehicle : ",
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.black),
                   ),

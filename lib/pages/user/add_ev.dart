@@ -66,40 +66,18 @@ class _addNew_EvState extends State<addNew_Ev> {
               // controller: _titlecontroller,
               maxLength: 50,
               decoration: InputDecoration(
-                label: Text("Vehicle Name"),
+                label: Text("Vehicle Plate Number"),
               ),
             ),
             Row(
               children: [
                 const Expanded(
                   child: TextField(
-                    keyboardType: TextInputType.number,
                     // controller: _amountcontroller,
                     maxLength: 20,
                     decoration: InputDecoration(
-                      prefixText: '\u{20B9} ',
-                      label: Text("Amount"),
+                      label: Text("Model Name"),
                     ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text("Select Date"),
-                      IconButton(
-                          style: IconButton.styleFrom(
-                              backgroundColor:
-                                  const Color.fromARGB(255, 136, 124, 208),
-                              foregroundColor:
-                                  const Color.fromARGB(255, 255, 255, 255)),
-                          onPressed: _presentDatePicker,
-                          icon: const Icon(Icons.calendar_month_outlined)),
-                    ],
                   ),
                 ),
               ],

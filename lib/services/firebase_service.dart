@@ -45,6 +45,10 @@ Future<String?> storeUserData(String name, String phone, String role) async {
   }
 }
 
+Future<void> addEv()async{
+  
+}
+
 Future<String> signInUser(email, password) async {
   try {
     final auth = FirebaseAuth.instance;

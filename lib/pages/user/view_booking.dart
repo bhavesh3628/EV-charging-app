@@ -6,26 +6,26 @@ import 'package:flutter/material.dart';
 import '../../ev_model.dart';
 import 'add_ev.dart';
 
-class manageStation_page extends StatefulWidget {
-  manageStation_page({Key? key});
+class View_Bookings extends StatefulWidget {
+  View_Bookings({Key? key});
 
   @override
-  State<manageStation_page> createState() => _manageStation_pageState();
+  State<View_Bookings> createState() => View_BookingsState();
 }
 
-class _manageStation_pageState extends State<manageStation_page> {
+class View_BookingsState extends State<View_Bookings> {
   final List<Ev_model> _registeredstations = [
     Ev_model(
-        city: 'Mumbai user',
+        ev_city: 'Mumbai user',
         station_name: 'Rcity Mall Parking',
         status: Status.Enable),
     Ev_model(
-      city: 'Navi Mumbai user',
+      ev_city: 'Navi Mumbai user',
       station_name: 'HP Pump',
       status: Status.Disable,
     ),
     Ev_model(
-      city: 'Manor',
+      ev_city: 'Manor',
       station_name: 'Indian Oil Pump',
       status: Status.Enable,
     ),
@@ -70,11 +70,6 @@ class _manageStation_pageState extends State<manageStation_page> {
         children: [
           Ev_list(registered: _registeredstations),
         ],
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _openAddExpenseOverlay,
-        icon: const Icon(Icons.add),
-        label: const Text("Add EV Vehicle"),
       ),
     );
   }

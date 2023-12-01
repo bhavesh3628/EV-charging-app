@@ -1,7 +1,8 @@
 import 'dart:ui';
 import 'package:ev_charging/pages/login_page.dart';
-import 'package:ev_charging/pages/user/bookings/viewbooking.dart';
-import 'package:ev_charging/pages/user/manage_station.dart';
+import 'package:ev_charging/pages/services/firebase_service.dart';
+import 'package:ev_charging/pages/user/Manage_ev/manage_ev.dart';
+import 'package:ev_charging/pages/user/view_booking.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,13 +25,18 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(
                 fontWeight: FontWeight.bold, color: Colors.white, fontSize: 25),
           ),
-          actions: const [
-            Icon(
-              Icons.output,
-              color: Colors.white,
-              size: 25,
+          actions: [
+            IconButton(
+              onPressed: () async {
+                await logout();
+              },
+              icon: const Icon(
+                Icons.output,
+                color: Colors.white,
+                size: 25,
+              ),
             ),
-            Padding(padding: EdgeInsets.only(right: 10))
+            const Padding(padding: EdgeInsets.only(right: 10))
           ],
         ),
         body: Center(
@@ -41,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   _buildCustomCard(context, 'assets/manage.png',
-                      'Manage \nEV Vehicles', manageStation_page()),
+                      'Manage \nEV Vehicles', Manage_EV_page()),
                   _buildCustomCard(context, 'assets/charge.png',
                       'Find \nStations', const HomePage()),
                 ],
@@ -55,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                     context,
                     'assets/timetable.png',
                     'View \nBookings',
-                    ViewBookings_Page(),
+                    View_Bookings(),
                   ),
                   _buildCustomCard(context, 'assets/toggle.png', 'Profile\n',
                       const LoginPage()),

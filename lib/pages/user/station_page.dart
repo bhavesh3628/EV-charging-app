@@ -24,9 +24,6 @@ class StationPage extends StatelessWidget {
   final Ev_model station;
   @override
   Widget build(BuildContext context) {
-    Color statusColor =
-        station.status == Status.Enable ? Colors.green : Colors.red;
-
     return Card(
       child: Padding(
           padding: const EdgeInsets.all(20),
@@ -61,32 +58,7 @@ class StationPage extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        station.city,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 3,
-                  ),
-                  Row(
-                    children: [
-                      const Text(
-                        "Status: ",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(5),
-                          color: statusColor,
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 5, vertical: 2),
-                        child: Text(
-                          station.status.toString().split('.').last,
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                        // ${station.status.toString().split('.').last}
+                        station.ev_city,
                       ),
                     ],
                   ),
