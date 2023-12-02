@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ev_charging/ev_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
@@ -32,6 +33,7 @@ Future<String?> storeUserData(String name, String phone, String role) async {
         'phone': phone,
         'role': role,
         'imgUrl': '',
+        'ev': [],
       });
       return 'success';
     } else {
@@ -45,8 +47,29 @@ Future<String?> storeUserData(String name, String phone, String role) async {
   }
 }
 
-Future<void> addEv()async{
-  
+Future<void> addEv(Ev_model ev) async {
+  try {
+    final user = FirebaseAuth.instance.currentUser!;
+    final userDocRef =
+        FirebaseFirestore.instance.collection('users').doc(user.uid);
+
+    // Create a new 'ev' document
+    final newEvDocRef = FirebaseFirestore.instance.collection('ev').doc();
+    await newEvDocRef.set({
+      'model_name': ev.model_name,
+      'plate_number': ev.plate_number,
+      'userId': ev.userId,
+    });
+
+    // Update the 'ev' array in the 'users' document
+    await userDocRef.update({
+      'ev': FieldValue.arrayUnion([newEvDocRef]),
+    });
+
+    print('ev vehicle added successfuly');
+  } catch (err) {
+    print('Error while adding EV : $err');
+  }
 }
 
 Future<String> signInUser(email, password) async {

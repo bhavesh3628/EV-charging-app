@@ -10,7 +10,7 @@ class Ev_model {
   // final Status List<Booking>vehicle;
   // final String station_name;
   final String plate_number;
-  final int userId;
+  final String userId;
 }
 
 class Station {

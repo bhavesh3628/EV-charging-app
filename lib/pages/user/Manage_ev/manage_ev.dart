@@ -1,4 +1,8 @@
+import 'dart:ffi';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ev_charging/pages/user/home_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../ev_model.dart';
@@ -12,28 +16,26 @@ class Manage_EV_page extends StatefulWidget {
 }
 
 class _Manage_EV_pageState extends State<Manage_EV_page> {
-  final List<Ev_model> vehiclelist = [
-    Ev_model(
-      userId: 01,
-      model_name: 'Fortuner',
-      plate_number: 'MH19-D9230',
-    ),
-    Ev_model(
-      userId: 02,
-      model_name: 'GT-Line',
-      plate_number: 'MH29-FO230',
-    ),
-    Ev_model(
-      userId: 03,
-      model_name: 'Ioniq 5',
-      plate_number: 'MH15-YR981',
-    ),
-    Ev_model(
-      userId: 04,
-      model_name: 'E-Tron GT',
-      plate_number: 'MH09-RK109',
-    ),
-  ];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getCarDetails();
+  }
+
+  final List<Ev_model> vehiclelist = [];
+
+  Future getCarDetails() async {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
+    final docRef =
+        await FirebaseFirestore.instance.collection('users').doc(userId).get();
+    final docList = docRef['ev'];
+    for (var i in docList) {
+      var carRef =
+          await FirebaseFirestore.instance.collection('ev').doc(i).get();
+      vehiclelist.add(carRef as Ev_model);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +49,8 @@ class _Manage_EV_pageState extends State<Manage_EV_page> {
       showModalBottomSheet(
         isScrollControlled: true,
         context: context,
-        builder: (ctx) => addNew_Ev(
-          onaddEv: _addEvVehicle,
+        builder: (ctx) => AddNewEv(
+          onAddEv: _addEvVehicle,
         ),
       );
     }

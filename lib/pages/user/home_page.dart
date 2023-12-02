@@ -2,6 +2,7 @@
 import 'package:ev_charging/pages/login_page.dart';
 import 'package:ev_charging/pages/services/firebase_service.dart';
 import 'package:ev_charging/pages/user/Manage_ev/manage_ev.dart';
+import 'package:ev_charging/pages/user/user_profile.dart';
 import 'package:ev_charging/pages/user/view_booking.dart';
 import 'package:flutter/material.dart';
 
@@ -64,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                     View_Bookings(),
                   ),
                   _buildCustomCard(context, 'assets/toggle.png', 'Profile\n',
-                      const LoginPage()),
+                      ProfileScreen()),
                 ],
               ),
             ],

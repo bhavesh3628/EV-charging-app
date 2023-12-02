@@ -12,16 +12,16 @@ class manageStation_admin_page extends StatefulWidget {
 
 class _manageStation_admin_pageState extends State<manageStation_admin_page> {
   final List<Ev_model> _registeredstations = [
-    Ev_model(model_name: 'Admin', plate_number: 'Admin', userId: 01),
+    Ev_model(model_name: 'Admin', plate_number: 'Admin', userId: 'xyz'),
     Ev_model(
       model_name: 'Admin',
       plate_number: 'Admin',
-      userId: 02,
+      userId: 'xyz',
     ),
     Ev_model(
       model_name: 'Admin',
       plate_number: 'Admin',
-      userId: 03,
+      userId: 'xyz',
     ),
   ];
 
