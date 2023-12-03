@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ev_charging/pages/user/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import '../../../ev_model.dart';
@@ -20,21 +21,39 @@ class _Manage_EV_pageState extends State<Manage_EV_page> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getCarDetails();
+    loadCarDetails();
   }
 
-  final List<Ev_model> vehiclelist = [];
+  late List<Ev_model> vehiclelist = [];
 
-  Future getCarDetails() async {
-    final userId = FirebaseAuth.instance.currentUser!.uid;
-    final docRef =
-        await FirebaseFirestore.instance.collection('users').doc(userId).get();
-    final docList = docRef['ev'];
-    for (var i in docList) {
-      var carRef =
-          await FirebaseFirestore.instance.collection('ev').doc(i).get();
-      vehiclelist.add(carRef as Ev_model);
+  Future<List<Ev_model>> getCarDetails() async {
+    final QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('ev').get();
+    final user = FirebaseAuth.instance.currentUser!.uid;
+    List<Ev_model> evList = [];
+
+    for (DocumentSnapshot documentSnapshot in querySnapshot.docs) {
+      Ev_model ev = Ev_model(
+        model_name: documentSnapshot.get('model_name'),
+        plate_number: documentSnapshot.get('plate_number'),
+        userId: user,
+      );
+      evList.add(ev);
     }
+
+    return evList;
+  }
+
+  Future<void> loadCarDetails() async {
+    final result = await getCarDetails();
+    setState(() {
+      vehiclelist = result;
+    });
+  }
+
+  Future<void> _refreshData() async {
+    await Future.delayed(const Duration(seconds: 2));
+    await loadCarDetails();
   }
 
   @override
@@ -69,11 +88,14 @@ class _Manage_EV_pageState extends State<Manage_EV_page> {
         ),
       ),
       body: Container(
-        child: ListView.builder(
-          itemBuilder: (context, index) {
-            return BookingCard(singlebook: vehiclelist[index]);
-          },
-          itemCount: vehiclelist.length,
+        child: RefreshIndicator(
+          onRefresh: _refreshData,
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              return BookingCard(singlebook: vehiclelist[index]);
+            },
+            itemCount: vehiclelist.length,
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(

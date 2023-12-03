@@ -27,9 +27,10 @@ class _SignupPageState extends State<SignupPage> {
     _passwordController.dispose();
   }
 
+  String selectedUserType = 'user';
+
   @override
   Widget build(BuildContext context) {
-    String selectedUserType = 'user';
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: SafeArea(
@@ -214,8 +215,8 @@ class _SignupPageState extends State<SignupPage> {
                       color: Colors.deepPurple,
                       borderRadius: BorderRadius.circular(12)),
                   child: Center(
-                    child: InkWell(
-                      onTap: () async {
+                    child: ElevatedButton(
+                      onPressed: () async {
                         final result = await signUpFunction(
                             _emailController.text.trim(),
                             _passwordController.text.trim());
@@ -236,11 +237,10 @@ class _SignupPageState extends State<SignupPage> {
                         }
 
                         showSnackBar(context, result!);
-                      }, //for signup page
+                      }, //for signup page,
                       child: const Text(
                         "Sign Up",
                         style: TextStyle(
-                          color: Colors.white,
                           fontSize: 17,
                         ),
                       ),

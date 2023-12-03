@@ -55,7 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   SizedBox(height: 20),
                   Text(
-                    'John Doe',
+                    '${details['name']}',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 20),

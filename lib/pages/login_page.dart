@@ -140,15 +140,20 @@ class _LoginPageState extends State<LoginPage> {
                       color: Colors.deepPurple,
                       borderRadius: BorderRadius.circular(12)),
                   child: Center(
-                    child: InkWell(
-                      onTap: () async {
-                        await signInUser(_emailController.text.trim(),
-                            _passwordController.text.trim());
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        print('dfsddv');
+                        try {
+                          await signInUser(_emailController.text.trim(),
+                              _passwordController.text.trim());
+                        } catch (err) {
+                          print(
+                              'Error occur while loging in ${err.toString()}');
+                        }
                       },
                       child: const Text(
                         "Sign In",
                         style: TextStyle(
-                          color: Colors.white,
                           fontSize: 17,
                         ),
                       ),
